@@ -1075,7 +1075,7 @@ GameObject:
   m_Component:
   - component: {fileID: 657842352}
   m_Layer: 0
-  m_Name: WeatherEffects
+  m_Name: TransitionEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1172,6 +1172,7 @@ MonoBehaviour:
   _field: {fileID: 453599180}
   _playerObject: {fileID: 1914896103}
   _movementSpeed: 2.5
+  _fogTransition: {fileID: 637466803}
   _inputDelay: 0.2
 --- !u!4 &996586409
 Transform:
@@ -1200,7 +1201,7 @@ GameObject:
   - component: {fileID: 1222155047}
   - component: {fileID: 1222155046}
   m_Layer: 0
-  m_Name: Fog
+  m_Name: Noise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

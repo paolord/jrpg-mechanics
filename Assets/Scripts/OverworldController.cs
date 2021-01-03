@@ -8,6 +8,7 @@ public class OverworldController : MonoBehaviour
     [SerializeField] private Tilemap _field;
     [SerializeField] private GameObject _playerObject;
     [SerializeField] private float _movementSpeed;
+    [SerializeField] private GameObject _fogTransition;
 
     private PlayerControls _playerControls;
     private Animator _playerMovementAnimator;
@@ -18,6 +19,9 @@ public class OverworldController : MonoBehaviour
     [SerializeField] private float _inputDelay;
     private float _inputDelayCurrent;
     private bool _waiting;
+
+    private bool _transitioning = false;
+    private float fade = 1f;
 
     private void Awake()
     {
@@ -50,6 +54,7 @@ public class OverworldController : MonoBehaviour
         updateDelay();
         if ((movementInput.x != 0 || movementInput.y != 0) && !_waiting)
         {
+            _transitioning = true;
             if (!_moving)
             {
                 _playerSpriteRenderer.flipX = movementInput.x < 0;
@@ -80,6 +85,20 @@ public class OverworldController : MonoBehaviour
                 }
                 _previousDirection = movementInput;
             }
+        }
+
+        if (_transitioning)
+        {
+            fade -= Time.deltaTime;
+
+            if (fade <= 0f)
+            {
+                fade = 0f;
+                _transitioning = false;
+            }
+            
+            Material mat = _fogTransition.GetComponent<SpriteRenderer>().material;
+            mat.SetFloat("_Fade", fade);
         }
     }
     private Vector3Int getNextMoveTile(Vector2 movementVector)
