@@ -52,7 +52,7 @@ public class OverworldController : MonoBehaviour
         {
             if (!_moving)
             {
-                _playerSpriteRenderer.flipX = movementInput.x < 0;
+                //_playerSpriteRenderer.flipX = movementInput.x < 0;
 
                 _playerMovementAnimator.SetBool("Idle", false);
 
@@ -73,7 +73,7 @@ public class OverworldController : MonoBehaviour
                 _nextPosition = _field.GetCellCenterWorld(nextCellLocation);
 
                 TileBase currentTile = _field.GetTile(nextCellLocation);
-                if (currentTile == null || currentTile.name == "tilemap_2")
+                if (currentTile == null /*|| currentTile.name == "tilemap_2"*/)
                 {
                     _moving = false;
                     _playerMovementAnimator.SetBool("Moving", false);
