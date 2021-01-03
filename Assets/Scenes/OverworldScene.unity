@@ -210,7 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minOffset: 0
   maxOffset: 100
-  speed: 0.0015
+  speed: 0.001
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
