@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.Events;
 
 public class OverworldController : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class OverworldController : MonoBehaviour
     [SerializeField] private float _inputDelay;
     private float _inputDelayCurrent;
     private bool _waiting;
+
+    [SerializeField] public UnityEvent StepEvent;
 
     private void Awake()
     {
@@ -46,6 +49,8 @@ public class OverworldController : MonoBehaviour
 
             //_playerMovementAnimator.Play("Movement", 0, 0.0f);
             _playerMovementAnimator.SetBool("Moving", false);
+            _nextPosition = Vector3.zero;
+            StepEvent.Invoke();
         }
         updateDelay();
         if ((movementInput.x != 0 || movementInput.y != 0) && !_waiting)
@@ -125,4 +130,5 @@ public class OverworldController : MonoBehaviour
     {
         _playerControls.Disable();
     }
+
 }

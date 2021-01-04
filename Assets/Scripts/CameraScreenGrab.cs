@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering; // see Note-1
-
+using UnityEngine.Events;
 /**
  * Note-1
  * When using the URP you need to trigger the OnPostRender method through the RenderPipelineManager
@@ -13,7 +13,9 @@ public class CameraScreenGrab : MonoBehaviour
 
     private bool _grab;
 
-    [SerializeField] public Renderer m_Display;
+    [SerializeField] private Renderer _transitionOverlay;
+
+    [SerializeField] public UnityEvent TriggerTransition;
 
     private void Awake()
     {
@@ -23,12 +25,17 @@ public class CameraScreenGrab : MonoBehaviour
 
     void Update()
     {
-        Vector2 movementInput = _playerControls.Player.Move.ReadValue<Vector2>();
-        
-        if (movementInput.x != 0)
-        {
-            _grab = true;
-        }
+        //Vector2 movementInput = _playerControls.Player.Move.ReadValue<Vector2>();
+
+        //if (movementInput.x != 0)
+        //{
+        //    _grab = true;
+        //}
+    }
+
+    public void GrabThenTriggerTransition()
+    {
+        _grab = true;
     }
 
     private void OnPostRender()
@@ -42,13 +49,14 @@ public class CameraScreenGrab : MonoBehaviour
             texture.ReadPixels(Camera.main.pixelRect, 0, 0, false);
             texture.Apply();
 
-            if (m_Display != null)
+            if (_transitionOverlay != null)
             {
                 //m_Display.material.mainTexture = texture;
 
-                m_Display.GetComponent<SpriteRenderer>().sprite = Sprite.Create(texture, Camera.main.pixelRect, new Vector2(0.5f, 0.5f), 16f);
-                
+                _transitionOverlay.GetComponent<SpriteRenderer>().sprite = Sprite.Create(texture, Camera.main.pixelRect, new Vector2(0.5f, 0.5f), 16f);
+
                 //m_Display.transform.localScale = new Vector3(10, 10, 0);
+                TriggerTransition.Invoke();
             }
 
             _grab = false;

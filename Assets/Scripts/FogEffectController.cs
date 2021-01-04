@@ -29,4 +29,13 @@ public class FogEffectController : MonoBehaviour
         // Note: You have to use the value in the Reference field in the Shader Graph Blackboard
         _noiseMaterial.SetVector("Vector2_95E3719", _offset);
     }
+    private void OnEnable()
+    {
+        _offset = new Vector4(minOffset, 0, 0, 0);
+    }
+
+    private void OnDisable()
+    {
+            
+    }
 }
