@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Noise
-  m_Shader: {fileID: -6465566751694194690, guid: cd5c5060372d34942aa0d952542f8ef9,
+  m_Name: Mosaic
+  m_Shader: {fileID: -6465566751694194690, guid: 1357b3e7d9e970c44a6a5b4e3ac1b4a7,
     type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -25,5 +25,5 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Fade: 0.15
+    - Pixelate: 100
     m_Colors: []
