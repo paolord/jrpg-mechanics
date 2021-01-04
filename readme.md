@@ -2,6 +2,6 @@
 
 Personal Unity/C# practice exercise.
 
-Quality is a goal but it's not guaranteed. So, *do not use* any code in another project.
+Dungeon Tilemap resources credited to 0x72 from https://0x72.itch.io/16x16-dungeon-tileset
 
-Pixel Art resources credited to Antifarea and https://opengameart.org
+Pixel Art Characters credited to alexdraws from https://alexdraws.itch.io/pixel-champions
