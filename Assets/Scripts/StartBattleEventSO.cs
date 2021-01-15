@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu (fileName = "StartBattleEvent", menuName = "Scriptable Objects/Start Battle Event")]
 public class StartBattleEventSO : ScriptableObject

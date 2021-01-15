@@ -73,7 +73,6 @@ public class OverworldController : MonoBehaviour
                     _playerMovementAnimator.SetFloat("Horizontal", movementInput.x);
                     _playerMovementAnimator.SetFloat("Vertical", movementInput.y);
                 }
-                print(movementInput);
 
                 Vector3Int nextCellLocation = getNextMoveTile(movementInput);
                 _nextPosition = _field.GetCellCenterWorld(nextCellLocation);

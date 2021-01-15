@@ -2179,7 +2179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingPixelation: 100
   endingPixelation: 40
-  transitionSpeed: 2
+  transitionSpeed: 2.75
 --- !u!1 &1740885271
 GameObject:
   m_ObjectHideFlags: 0

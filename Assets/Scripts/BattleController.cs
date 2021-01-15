@@ -7,10 +7,14 @@ public class BattleController : MonoBehaviour
 {
     private StartBattleEventSO _battleEvent;
     private EncounterSO _encounter;
+    private bool _start;
+    private bool _battleSceneLoaded;
 
     private void Awake()
     {
         _battleEvent = Resources.Load<StartBattleEventSO>("ScriptableObjects/StartBattleEvent");
+        _start = false;
+        _battleSceneLoaded = false;
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -22,13 +26,18 @@ public class BattleController : MonoBehaviour
 
     private void Update()
     {
+        if (_encounter != null && _start && !_battleSceneLoaded)
+        {
+            _battleSceneLoaded = true;
+            //Debug.Log(_encounter);
+            SceneManager.LoadScene("BattleScene");
+        }
         // TODO: Call ATBEvent to give encounter data
     }
 
     public void StartBattle()
     {
-        Debug.Log(_encounter);
-        //SceneManager.LoadScene("BattleScene");
+        _start = true;
     }
 
     private void OnEnable()

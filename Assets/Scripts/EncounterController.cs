@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class EncounterController : MonoBehaviour
@@ -23,7 +21,7 @@ public class EncounterController : MonoBehaviour
     {
         int encounterRoll = 0;
         int randomEncounterRoll = Mathf.FloorToInt(Random.value * 100);
-        Debug.Log(randomEncounterRoll);
+        //Debug.Log(randomEncounterRoll);
         _steps++; // Specific number of steps guarantee an encounter
         // 20% Base Encounter rate;
         if ((randomEncounterRoll >= 0 && randomEncounterRoll <= _baseEncounterRate) || _steps >= 7)
@@ -36,8 +34,8 @@ public class EncounterController : MonoBehaviour
                 {
                     currentEncounter = encounter.encounterType;
                     currentEncounter.ApplyLevels();
-                    Debug.Log(currentEncounter.Mob[0].label);
-                    Debug.Log(currentEncounter.Mob[1].label);
+                    //Debug.Log(currentEncounter.Mob[0].label);
+                    //Debug.Log(currentEncounter.Mob[1].label);
                     _battleEvent.EncounterDetermined(currentEncounter);
                     break; // break out of foreach, encounter type has been selected
                 }

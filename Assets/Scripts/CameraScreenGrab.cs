@@ -23,16 +23,6 @@ public class CameraScreenGrab : MonoBehaviour
         _grab = false;
     }
 
-    void Update()
-    {
-        //Vector2 movementInput = _playerControls.Player.Move.ReadValue<Vector2>();
-
-        //if (movementInput.x != 0)
-        //{
-        //    _grab = true;
-        //}
-    }
-
     public void GrabThenTriggerTransition()
     {
         _grab = true;
