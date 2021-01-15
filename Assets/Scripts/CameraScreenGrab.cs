@@ -43,7 +43,7 @@ public class CameraScreenGrab : MonoBehaviour
         if (_grab)
         {
             Texture2D texture = new Texture2D(Camera.main.pixelWidth, Camera.main.pixelHeight, TextureFormat.RGB24, false);
-            //Debug.Log(Screen.width + " " + Screen.height);
+            //Debug.Log(Camera.main.pixelWidth + " " + Camera.main.pixelHeight);
             //Debug.Log(Camera.main.pixelRect);
 
             texture.ReadPixels(Camera.main.pixelRect, 0, 0, false);
@@ -52,8 +52,8 @@ public class CameraScreenGrab : MonoBehaviour
             if (_transitionOverlay != null)
             {
                 //m_Display.material.mainTexture = texture;
-
-                _transitionOverlay.GetComponent<SpriteRenderer>().sprite = Sprite.Create(texture, Camera.main.pixelRect, new Vector2(0.5f, 0.5f), 16f);
+                Vector2 v = new Vector2(0.5f, 0.5f);
+                _transitionOverlay.GetComponent<SpriteRenderer>().sprite = Sprite.Create(texture, Camera.main.pixelRect, v, 16f);
 
                 //m_Display.transform.localScale = new Vector3(10, 10, 0);
                 TriggerTransition.Invoke();

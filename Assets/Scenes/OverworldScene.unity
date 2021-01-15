@@ -2134,9 +2134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebc033634640d946b8db76145cdf772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingPixelation: 500
-  endingPixelation: 10
-  transitionSpeed: 10
+  startingPixelation: 100
+  endingPixelation: 40
+  transitionSpeed: 2.75
 --- !u!1 &1740885271
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,7 +2299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914896103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2355,6 +2355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseEncounterRate: 15
   encounterRates: {fileID: 11400000, guid: 7c6b9859f8cc3264eb1e64ec128b628f, type: 2}
+  currentEncounter: {fileID: 0}
   StartBattle:
     m_PersistentCalls:
       m_Calls:

@@ -37,7 +37,7 @@ public class TransitionController : MonoBehaviour
             if (_pixelation <= endingPixelation)
             {
                 _isTransitioning = false;
-                SceneManager.LoadScene("BattleScene");
+                //SceneManager.LoadScene("BattleScene");
             } else
             {
                 _pixelation += (transitionSpeed * -1);
