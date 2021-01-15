@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TransitionController : MonoBehaviour
 {
@@ -10,6 +9,12 @@ public class TransitionController : MonoBehaviour
     private float _pixelation;
     private bool _isTransitioning;
     private Material mosaicMaterial;
+    private StartBattleEventSO _battleEvent;
+
+    private void Awake()
+    {
+        _battleEvent = Resources.Load<StartBattleEventSO>("ScriptableObjects/StartBattleEvent");
+    }
 
     public void StartTransition()
     {
@@ -37,10 +42,10 @@ public class TransitionController : MonoBehaviour
             if (_pixelation <= endingPixelation)
             {
                 _isTransitioning = false;
-                //SceneManager.LoadScene("BattleScene");
+                _battleEvent.TransitionAnimationEnd();
             } else
             {
-                _pixelation += (transitionSpeed * -1);
+                _pixelation -= transitionSpeed;
                 mosaicMaterial.SetFloat("Pixelate", _pixelation);
             }
         }

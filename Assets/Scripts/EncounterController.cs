@@ -10,10 +10,13 @@ public class EncounterController : MonoBehaviour
 
     public EncounterSO currentEncounter;
     public UnityEvent StartBattle;
+    private StartBattleEventSO _battleEvent;
+
+    private int _steps;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        _battleEvent = Resources.Load<StartBattleEventSO>("ScriptableObjects/StartBattleEvent");
     }
 
     public void RandomEncounter()
@@ -21,9 +24,11 @@ public class EncounterController : MonoBehaviour
         int encounterRoll = 0;
         int randomEncounterRoll = Mathf.FloorToInt(Random.value * 100);
         Debug.Log(randomEncounterRoll);
+        _steps++; // Specific number of steps guarantee an encounter
         // 20% Base Encounter rate;
-        if (randomEncounterRoll >= 0 && randomEncounterRoll <= _baseEncounterRate)
+        if ((randomEncounterRoll >= 0 && randomEncounterRoll <= _baseEncounterRate) || _steps >= 7)
         {
+            _steps = 0;
             foreach (EncounterItem encounter in encounterRates.encounters)
             {
                 encounterRoll = Mathf.FloorToInt(Random.value * 100);
@@ -33,6 +38,7 @@ public class EncounterController : MonoBehaviour
                     currentEncounter.ApplyLevels();
                     Debug.Log(currentEncounter.Mob[0].label);
                     Debug.Log(currentEncounter.Mob[1].label);
+                    _battleEvent.EncounterDetermined(currentEncounter);
                     break; // break out of foreach, encounter type has been selected
                 }
             }
